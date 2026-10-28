@@ -6,11 +6,11 @@ class Habitacion:
     capacidad: int
     __huespedes: int
 
-    def __init__(self, numero: int, precio_noche: float = 80000, capacidad: int = 1, huespedes: int = 0):
+    def __init__(self, numero: int, precio_noche: float = 80000, capacidad: int = 1):
         self.numero = numero
         self.precio_noche = precio_noche
         self.capacidad = capacidad
-        self.huespedes = huespedes
+        self.huespedes = 0
 
     def __str__(self):
         return f"numero: {self.numero}, "\
@@ -34,3 +34,11 @@ class Habitacion:
     def costo_estadia(self, noches: int)-> float:
         """Calcula el costo de estadia multiplicando precio por noche de la instancia por las noches pasadas por parametro"""
         return self.precio_noche * noches
+
+    def to_dict(self)-> dict:
+        return {
+            "numero": self.numero,
+            "precio_noche": self.precio_noche,
+            "capacidad": self.capacidad,
+            "huespedes": self.huespedes
+        }
